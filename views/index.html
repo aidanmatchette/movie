@@ -1,0 +1,28 @@
+{{ block "index" . }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Rating Form</title>
+  <script src="https://unpkg.com/htmx.org/dist/htmx.min.js"></script>
+</head>
+<body>
+
+<h1>Enter Movie Title and Rating</h1>
+
+<form id="movie-form" hx-post="/movies" hx-target="#result">
+  <label for="title">Movie Title:</label><br>
+  <input type="text" id="title" name="title"><br><br>
+
+  <label for="rating">Rating (1 - 10):</label><br>
+  <input type="number" id="rating" name="rating" min="1" max="10"><br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+{{ end }}
+</body>
+</html>
+
+

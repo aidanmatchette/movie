@@ -8,6 +8,6 @@ type User struct {
     FirstName string
     LastName string
     Email   string
+    WishlistID int
     Wishlist Wishlist
 }
-

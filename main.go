@@ -2,10 +2,12 @@ package main
 
 import (
 	"aidanmatchette/movie/initializers"
-	"net/http"
+	"aidanmatchette/movie/internal/controllers"
+	"aidanmatchette/movie/templates"
 
 	"github.com/labstack/echo/v4"
 )
+
 
 func init() {
     initializers.LoadEnvVars()
@@ -17,8 +19,9 @@ func main() {
 
 
     e := echo.New()
-    e.GET("/", func(c echo.Context) error {
-        return c.String(http.StatusOK, "Hello, world")
-    })
+    e.Renderer = templates.NewTemplate()
+
+    e.GET("/movies", controllers.GetMoviePage)
+    e.POST("/movies", controllers.CreateMovie)
     e.Logger.Fatal(e.Start(":8080"))
 }
